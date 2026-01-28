@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор металла | SPACE METALL</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://spacemetall.ru" class="logo logo-text" target="_blank" rel="noopener">SPACE METALL</a>
+      <p class="tagline">Калькулятор металла</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="calculator card">
+      <h1 class="card-title">Расчёт веса металлопроката</h1>
+
+      <div class="form-row">
+        <label class="label">Металл</label>
+        <div class="metal-tabs" id="metal-tabs">
+          <input type="radio" name="metal" id="metal-black" value="black" checked>
+          <label for="metal-black">Черный</label>
+          <input type="radio" name="metal" id="metal-stainless" value="stainless">
+          <label for="metal-stainless">Нержавеющий</label>
+          <input type="radio" name="metal" id="metal-aluminum" value="aluminum">
+          <label for="metal-aluminum">Алюминий</label>
+          <input type="radio" name="metal" id="metal-copper" value="copper">
+          <label for="metal-copper">Медь</label>
+          <input type="radio" name="metal" id="metal-brass" value="brass">
+          <label for="metal-brass">Латунь</label>
+          <input type="radio" name="metal" id="metal-bronze" value="bronze">
+          <label for="metal-bronze">Бронза</label>
+          <input type="radio" name="metal" id="metal-titanium" value="titanium">
+          <label for="metal-titanium">Титан</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="label" for="sortament">Сортамент</label>
+        <select id="sortament" class="select"></select>
+      </div>
+
+      <div class="form-row">
+        <label class="label" for="grade">Марка стали</label>
+        <select id="grade" class="select"></select>
+      </div>
+
+      <div class="form-row">
+        <label class="label">Найти</label>
+        <div class="calc-mode-tabs">
+          <input type="radio" name="calcMode" id="mode-mass" value="mass" checked>
+          <label for="mode-mass">Массу (кг)</label>
+          <input type="radio" name="calcMode" id="mode-length" value="length">
+          <label for="mode-length">Длину</label>
+        </div>
+      </div>
+
+      <div id="params" class="params"></div>
+
+      <div class="form-row actions">
+        <button type="button" id="calc-btn" class="btn btn-primary">Рассчитать</button>
+      </div>
+
+      <div id="result" class="result" aria-live="polite"></div>
+      <div id="hint" class="hint"></div>
+
+      <section class="cost-section">
+        <h2 class="card-title card-title--small">Расчёт стоимости</h2>
+        <div class="form-row">
+          <label class="label" for="price-per-ton">Цена за тонну, руб</label>
+          <input type="number" id="price-per-ton" class="input-number" min="0" step="any" placeholder="0">
+        </div>
+        <div class="form-row cost-checkbox-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="cost-blank" name="costBlank">
+            <span>Заготовка</span>
+          </label>
+        </div>
+        <div id="cost-blank-panel" class="cost-blank-panel" hidden>
+          <div class="form-row">
+            <label class="label" for="cost-markup">Наценка за резку на заготовку, % к цене за тонну</label>
+            <input type="number" id="cost-markup" class="input-number" min="0" step="any" placeholder="0" value="0">
+          </div>
+          <div class="form-row">
+            <label class="label" for="cost-cutting">Стоимость резки, руб</label>
+            <input type="number" id="cost-cutting" class="input-number" min="0" step="any" placeholder="0" value="0">
+          </div>
+        </div>
+        <div id="cost-result" class="cost-result" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section id="history-section" class="history-section card">
+      <h2 class="card-title card-title--small">История расчётов</h2>
+      <ul id="history" class="history-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="https://spacemetall.ru" target="_blank" rel="noopener">spacemetall.ru</a>
+    <span class="footer-sep">|</span>
+    <span>Калькулятор металла</span>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
